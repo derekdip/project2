@@ -31,7 +31,7 @@ public class GraphProject {
     public static void main(String[] args) {
         int graphWidth = 1000;
         int graphHeight = 1000;
-        int nodeCount = 400;
+        int nodeCount = 30;
         int distance = 90;
         // Setting static values for the NetworkNode class
         NetworkNode.distance = distance;
@@ -49,10 +49,21 @@ public class GraphProject {
         Matrix m = new Matrix(nodes,distance);
         AdjacencyList a = new AdjacencyList(nodes,distance);
 
-        m.printSolution(m.BFS());
-        a.printSolution(a.BFS());
-        m.printSolution(m.DFS());
-        a.printSolution(a.DFS());
+        for(NetworkNode[] row:m.matrix){
+            for(NetworkNode n:row){
+                if(n!=null){
+                    System.out.print(n.id+" ");
+                }
+                else{
+                    System.out.print("0 ");
+                }
+            }
+            System.out.println();
+        }
+        // m.printSolution(m.BFS());
+        // a.printSolution(a.BFS());
+        // m.printSolution(m.DFS());
+        // a.printSolution(a.DFS());
         writeScript(nodes,distance,graphWidth,graphHeight);//this re-writes the js script file so we can plot the new values
         File htmlFile = new File("visualizeGraph.html");//here we open the html file to visualize the graph
         try {
