@@ -1,0 +1,5 @@
+git checkout -b '<branch-name>' [creates a new branch where you can work on]
+git add .                       [adds all files together to be ready to save]
+git commit -m '<message>'       [saving file changes with a message]
+git push                        [pushing current commits to the repo]
+git pull origin <branch name>   [pulling changes from a branch to the branch your currently on]
