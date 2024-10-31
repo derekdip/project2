@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
+
 
 public class Matrix{
     public NetworkNode[][] matrix;
@@ -116,6 +118,12 @@ public class Matrix{
         }
     }
     private static double getDistance(NetworkNode n1, NetworkNode n2){
+        Random rand = new Random();
+        int data = rand.nextInt(101)
         return Math.sqrt(Math.pow(n1.x-n2.x,2) + Math.pow(n1.y-n2.y,2));
+        //int sender = 100 nJ/bit * data + 100 pJ/bit/m^2 * data * transmission^2
+        //int reciever = 100 nJ/bit * data 
+        
+
     }
 }

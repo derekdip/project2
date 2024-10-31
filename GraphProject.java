@@ -31,7 +31,7 @@ public class GraphProject {
     public static void main(String[] args) {
         int graphWidth = 1000;
         int graphHeight = 1000;
-        int nodeCount = 400;
+        int nodeCount = 100;
         int distance = 90;
         // Setting static values for the NetworkNode class
         NetworkNode.distance = distance;
