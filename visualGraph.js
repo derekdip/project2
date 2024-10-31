@@ -2,7 +2,7 @@ const distance =90
 const width = 1000
 const height = 1000
 const list_of_nodes = [
-//{val: 0, x: 540, y: 801},
+{val: 0, x: 540, y: 801},
 {val: 1, x: 916, y: 872},
 {val: 2, x: 671, y: 909},
 {val: 3, x: 894, y: 958},
