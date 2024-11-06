@@ -76,6 +76,7 @@ public class Dykstra {
                 sum+=optimalPath.weightOfPath;
             }
             System.out.println("The total energy used by the group is: "+sum);
+            sum = 0;
         }
     
     }
