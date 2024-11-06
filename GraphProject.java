@@ -50,9 +50,10 @@ public class GraphProject {
         AdjacencyList a = new AdjacencyList(nodes,distance);
 
         m.printSolution(m.BFS());
-        a.printSolution(a.BFS());
-        m.printSolution(m.DFS());
         a.printSolution(a.DFS());
+        a.printMST();
+
+
         writeScript(nodes,distance,graphWidth,graphHeight);//this re-writes the js script file so we can plot the new values
         File htmlFile = new File("visualizeGraph.html");//here we open the html file to visualize the graph
         try {
