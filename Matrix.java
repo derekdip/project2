@@ -53,7 +53,7 @@ public class Matrix{
                 continue;
             }
             visited.put(matrix[i][i].id, matrix[i][i]);
-            LLNode linkedListHead = new LLNode(matrix[i][i].id);
+            LLNode linkedListHead = new LLNode(matrix[i][i]);
             LLNode tail = linkedListHead;
             DFSHelper(matrix[i],visited,tail);
             solution.add(linkedListHead);
@@ -64,7 +64,7 @@ public class Matrix{
         for(int i = 0; i < row.length; i++){
             if(row[i]!=null && !visited.containsKey(row[i].id)){
                 visited.put(row[i].id, row[i]);
-                tail.next = new LLNode(row[i].id);
+                tail.next = new LLNode(row[i]);
                 tail = DFSHelper(matrix[row[i].id], visited, tail.next);
             }
         }
@@ -78,7 +78,7 @@ public class Matrix{
                 continue;
             }
             visited.put(matrix[i][i].id, matrix[i][i]);
-            LLNode linkedListHead = new LLNode(matrix[i][i].id);
+            LLNode linkedListHead = new LLNode(matrix[i][i]);
             LLNode tail = linkedListHead;
             BFSHelper(matrix[i],visited,tail);
             solution.add(linkedListHead);
@@ -90,7 +90,7 @@ public class Matrix{
         for(int i = 0; i < row.length; i++){
             if(row[i]!=null && !visited.containsKey(row[i].id)){
                 visited.put(row[i].id, row[i]);
-                tail.next = new LLNode(row[i].id);
+                tail.next = new LLNode(row[i]);
                 tail = tail.next;
                 foundNeighborIDs.add(row[i].id);
             }

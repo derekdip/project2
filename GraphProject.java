@@ -49,21 +49,23 @@ public class GraphProject {
         Matrix m = new Matrix(nodes,distance);
         AdjacencyList a = new AdjacencyList(nodes,distance);
 
-        for(NetworkNode[] row:m.matrix){
-            for(NetworkNode n:row){
-                if(n!=null){
-                    System.out.print(n.id+" ");
-                }
-                else{
-                    System.out.print("0 ");
-                }
-            }
-            System.out.println();
-        }
+        // for(NetworkNode[] row:m.matrix){
+        //     for(NetworkNode n:row){
+        //         if(n!=null){
+        //             System.out.print(n.id+" ");
+        //         }
+        //         else{
+        //             System.out.print("0 ");
+        //         }
+        //     }
+        //     System.out.println();
+        // }
         // m.printSolution(m.BFS());
         // a.printSolution(a.BFS());
         // m.printSolution(m.DFS());
         // a.printSolution(a.DFS());
+        Dykstra d = new Dykstra(a.nodeList,nodes);
+        System.out.println("The total energy used is: "+d.sum);
         writeScript(nodes,distance,graphWidth,graphHeight);//this re-writes the js script file so we can plot the new values
         File htmlFile = new File("visualizeGraph.html");//here we open the html file to visualize the graph
         try {

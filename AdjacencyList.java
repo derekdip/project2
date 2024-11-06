@@ -30,7 +30,7 @@ public class AdjacencyList{
             LLNode tail = null;
             if(!visited.containsKey(i)){
                 visited.put(i, nodeList[i].get(i));
-                linkedListHead = new LLNode(i);
+                linkedListHead = new LLNode(nodes[i]);
                 tail = linkedListHead;
                 tail = DFSHelper(i, visited, tail);
                 solution.add(linkedListHead);
@@ -46,7 +46,7 @@ public class AdjacencyList{
             if(visited.containsKey(i)){
                 continue;
             }
-            LLNode linkedListHead = new LLNode(i);
+            LLNode linkedListHead = new LLNode(nodes[i]);
             LLNode tail = linkedListHead;
             Collection<NetworkNode> currentRow = nodeList[i].values();
             visited.put(i, nodes[i]);
@@ -61,7 +61,7 @@ public class AdjacencyList{
             if(!visited.containsKey(n.id)){
                 visited.put(n.id, n);
                 nextRows.add(nodeList[n.id]);
-                tail.next = new LLNode(n.id);
+                tail.next = new LLNode(n);
                 tail = tail.next;
             }
         }
@@ -75,7 +75,7 @@ public class AdjacencyList{
         for(NetworkNode n : nodeList[index].values()){
             if(!visited.containsKey(n.id)){
                 visited.put(n.id, n);
-                tail.next = new LLNode(n.id);
+                tail.next = new LLNode(n);
                 tail = DFSHelper(n.id, visited, tail.next);
             }
         }
