@@ -1,6 +1,9 @@
 import java.util.HashMap;
+import java.util.List;
+import java.util.PriorityQueue;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Comparator;
 
 public class AdjacencyList{
     public HashMap<Integer, NetworkNode>[] nodeList;
@@ -109,6 +112,68 @@ public class AdjacencyList{
     }
     private static double getDistance(NetworkNode n1, NetworkNode n2){
         return Math.sqrt(Math.pow(n1.x-n2.x,2) + Math.pow(n1.y-n2.y,2));
+    }
+    public ArrayList<List<NetworkNode>> getMST() {
+        boolean[] inMST = new boolean[nodes.length]; //track each node exists inMST; initializes inMst with amt of nodes to false
+        ArrayList<List<NetworkNode>> allMSTs = new ArrayList<>(); //ArrayList of List NetworkNodes; As long as there is another component then ArrayList grows by one
+        //ArrayList<Double> cost = new ArrayList<>();
+        //double costOfAllWeights = 0;
+
+        for (int i = 0; i < nodes.length; i++) {
+           
+            if (inMST[i]) continue;	 // If the node is already in an MST, skip it
+
+            PriorityQueue<NetworkNode> minHeap = new PriorityQueue<>(Comparator.comparingDouble(n -> NetworkNode.weightOfEdgeInPetajoules(n, n)));
+            
+            
+
+            List<NetworkNode> mst = new ArrayList<>(); // MST for the current component
+            minHeap.add(nodes[i]);
+            
+            while (!minHeap.isEmpty()) {
+                NetworkNode currentNode = minHeap.poll();
+
+                if (inMST[currentNode.id]) continue; // Skip if already in MST
+
+                // Include the current node in the MST
+                inMST[currentNode.id] = true;
+                mst.add(currentNode);
+
+                // Update the priority queue with the edges of the newly added node
+                for (var entry : nodeList[currentNode.id].entrySet()) {
+                    NetworkNode neighbor = entry.getValue();
+                    double edgeWeight = NetworkNode.weightOfEdgeInPetajoules(currentNode, neighbor);
+                   // costOfAllWeights += edgeWeight;
+                    //cost.a
+                    
+
+                    if (!inMST[neighbor.id] && edgeWeight >= 0) {
+                        minHeap.add(neighbor);
+                    }
+                }
+            }
+
+            // Add the MST for the current component to the list of all MSTs
+            allMSTs.add(mst);
+        }
+
+        return allMSTs; // Return the list of MSTs for all components
+    }
+   
+
+	public void printMST() 
+    {
+		ArrayList<List<NetworkNode>> mstComponents = getMST();
+		for (int i = 0; i < mstComponents.size(); i++) {
+		    System.out.println("MST for component " + (i + 1) + ":");
+		    for (NetworkNode node : mstComponents.get(i)) {
+		        System.out.print(node.id + " ");
+		    }
+		    System.out.println();
+		}
+
+    	
+    	
     }
 
 }
